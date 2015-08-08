@@ -534,3 +534,7 @@ body .header {
 	line-height: 38px;
 }
 }
+.navbar-right
+{
+	font-weight: 500 !important;
+}
