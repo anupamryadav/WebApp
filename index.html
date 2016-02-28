@@ -237,19 +237,19 @@
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 centered">
         <h3>Fill the following form to get in touch with us</h3>
-        <form id="contact" method="post" class="form" role="form" action="https://docs.google.com/forms/d/13OUmUfryF9GYSQBsXBrNHBj2VOPSX6kfTwL536-HTIM/formResponse">
+        <form id="contact"  class="form" role="form" >
           <div class="row">
             <div class="col-xs-6 col-md-6 form-group">
-              <input class="form-control"  name="entry.74687672" placeholder="Name" type="text" id="entry_74687672" required  />
+              <input class="form-control"  placeholder="Name" type="text" id="name" required  />
             </div>
             <div class="col-xs-6 col-md-6 form-group">
-              <input class="form-control"  name="entry_1165674975" placeholder="Email" type="email" id="entry_1165674975" required />
+              <input class="form-control"  placeholder="Email" type="email" id="email" required />
             </div>
           </div>
-          <textarea class="form-control"  name="entry_2005618604" placeholder="Message" rows="5" id="entry_2005618604"></textarea>
+          <textarea class="form-control"   placeholder="Message" rows="5" id="subject"></textarea>
           <div class="row">
             <div class="col-xs-12 col-md-12">
-              <button class="btn btn btn-lg" type="submit">Send Message</button>
+              <button class="btn btn btn-lg" id="ButtonSubmit" onclick="postContactToGoogle()" >Send Message</button>
             </div>
           </div>
         </form>
@@ -296,6 +296,38 @@
   ga('create', 'UA-65941647-1', 'auto');
   ga('send', 'pageview');
 
+</script>
+         <script type="text/javascript" >
+    function postContactToGoogle() {
+        
+        var email = $('#email').val();
+        var name = $('#name').val();
+        var subject = $('#subject').val();
+        
+     
+            $.ajax({
+                url: "https://docs.google.com/forms/d/13OUmUfryF9GYSQBsXBrNHBj2VOPSX6kfTwL536-HTIM/formResponse",
+                data: { "entry.74687672": name,"entry.1165674975": email, "entry.2005618604":subject },
+                type: "POST",
+              dataType: "xml",
+                statusCode: {
+                    0: function () {
+                          $('#name').val("");
+                        $('#email').val("");
+                        $('#subject').val("");
+                        $('#message').val("");
+                        alert("Your message was sent successfully. Thanks.");
+                    },
+                    200: function () {
+                           $('#name').val("");
+                        $('#email').val("");
+                        $('#subject').val("");
+                        $('#message').val("");
+                        alert("Your message was sent successfully. Thanks.");
+                    }
+                }
+            });
+    }
 </script>
 </body>
 </html>
