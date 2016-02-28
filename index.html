@@ -249,7 +249,7 @@
           <textarea class="form-control"   placeholder="Message" rows="5" id="subject"></textarea>
           <div class="row">
             <div class="col-xs-12 col-md-12">
-              <button class="btn btn btn-lg" id="ButtonSubmit" onclick="postContactToGoogle()" >Send Message</button>
+              <button type="button" class="btn btn btn-lg" id="ButtonSubmit" onclick="postContactToGoogle()" >Send Message</button>
             </div>
           </div>
         </form>
@@ -315,14 +315,14 @@
                           $('#name').val("");
                         $('#email').val("");
                         $('#subject').val("");
-                        $('#message').val("");
+                        
                         alert("Your message was sent successfully. Thanks.");
                     },
                     200: function () {
                            $('#name').val("");
                         $('#email').val("");
                         $('#subject').val("");
-                        $('#message').val("");
+                        
                         alert("Your message was sent successfully. Thanks.");
                     }
                 }
